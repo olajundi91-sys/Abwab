@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>أبواب الحياة الطيبة</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  body { font-family:'Tajawal',sans-serif; background:linear-gradient(160deg,#1a0a2e 0%,#2d1457 40%,#0d1f3c 100%); min-height:100vh; overflow-x:hidden; color:#fff; }
+  .page { display:none; min-height:100vh; }
+  .page.active { display:flex; flex-direction:column; }
+  .stars { position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:0; }
+  .star { position:absolute; border-radius:50%; background:rgba(255,255,255,0.8); animation:twinkle 3s infinite alternate; }
+  @keyframes twinkle { 0%{opacity:0.2;transform:scale(1)} 100%{opacity:1;transform:scale(1.4)} }
+  .glow-orb { position:fixed; border-radius:50%; pointer-events:none; z-index:0; }
+  .orb1 { width:400px; height:400px; background:radial-gradient(circle,rgba(124,58,237,0.13) 0%,transparent 70%); top:-100px; right:-100px; }
+  .orb2 { width:300px; height:300px; background:radial-gradient(circle,rgba(240,208,128,0.07) 0%,transparent 70%); bottom:60px; left:-60px; }
+
+  /* HOME */
+  .hero { position:relative; z-index:2; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:40px 16px 60px; min-height:100vh; }
+  .title-ar { font-family:'Amiri',serif; font-size:clamp(28px,8vw,48px); font-weight:700; color:#f0d080; text-align:center; margin-bottom:8px; text-shadow:0 0 30px rgba(240,208,128,0.3); }
+  .subtitle-ar { font-size:clamp(13px,3.5vw,17px); color:rgba(255,255,255,0.55); text-align:center; margin-bottom:40px; font-weight:300; }
+  .scene { position:relative; width:100%; max-width:860px; display:flex; flex-direction:column; align-items:center; }
+  .doors-row { display:flex; justify-content:center; align-items:flex-end; gap:clamp(6px,2vw,18px); flex-wrap:nowrap; width:100%; padding:0 8px; }
+  .door-wrap { display:flex; flex-direction:column; align-items:center; cursor:pointer; transition:transform 0.35s cubic-bezier(.34,1.56,.64,1); flex:1; max-width:110px; position:relative; z-index:10; touch-action:manipulation; -webkit-tap-highlight-color:rgba(255,255,255,0.1); }
+  .door-wrap:hover { transform:translateY(-10px); }
+  .door-wrap:active { transform:translateY(-4px) scale(0.97); }
+  .door-label { font-family:'Amiri',serif; font-size:clamp(11px,2.5vw,15px); color:#f0d080; margin-bottom:8px; text-align:center; font-weight:700; white-space:nowrap; }
+  .door { width:100%; aspect-ratio:0.56; border-radius:999px 999px 0 0; position:relative; overflow:hidden; transition:all 0.4s; box-shadow:0 8px 28px rgba(0,0,0,0.5); }
+  .door-d1 { background:linear-gradient(180deg,#7c3aed,#4c1d95); }
+  .door-d2 { background:linear-gradient(180deg,#0e7490,#164e63); }
+  .door-d3 { background:linear-gradient(180deg,#b45309,#78350f); }
+  .door-d4 { background:linear-gradient(180deg,#047857,#064e3b); }
+  .door-d5 { background:linear-gradient(180deg,#be185d,#831843); }
+  .door-inner { position:absolute; inset:8px 8px 0 8px; border-radius:999px 999px 0 0; border:1.5px solid rgba(255,255,255,0.15); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; }
+  .door-knob { width:9px; height:9px; border-radius:50%; background:#f0d080; box-shadow:0 0 8px #f0d080; }
+  .door-arch { position:absolute; top:0; left:50%; transform:translateX(-50%); width:70%; height:30%; border-radius:999px 999px 0 0; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.12); border-bottom:none; }
+  .door-icon { font-size:clamp(18px,4vw,28px); }
+  .ground { width:90%; max-width:600px; height:2px; background:linear-gradient(90deg,transparent,rgba(240,208,128,0.4),transparent); }
+  .floor-glow { width:90%; max-width:600px; height:30px; background:radial-gradient(ellipse,rgba(240,208,128,0.08) 0%,transparent 70%); margin-top:-15px; }
+  .cta-text { font-family:'Amiri',serif; font-size:clamp(14px,3.5vw,18px); color:rgba(255,255,255,0.6); text-align:center; margin-top:30px; }
+  .cta-text span { color:#f0d080; }
+
+  /* SHARED NAV */
+  .top-nav { position:relative; z-index:1; display:flex; align-items:center; justify-content:space-between; padding:16px 20px 8px; }
+  .back-btn { display:flex; align-items:center; gap:6px; cursor:pointer; background:rgba(255,255,255,0.08); border:none; color:rgba(255,255,255,0.7); font-family:'Tajawal',sans-serif; font-size:14px; padding:8px 14px; border-radius:20px; }
+  .back-btn:active { background:rgba(255,255,255,0.18); }
+  .nav-title { font-family:'Amiri',serif; font-size:clamp(18px,5vw,24px); color:#f0d080; font-weight:700; }
+
+  /* DHIKR PAGE */
+  .dhikr-page { position:relative; z-index:1; flex:1; display:flex; flex-direction:column; }
+  .quote-box { margin:6px 16px 14px; padding:12px 16px; border-radius:14px; background:rgba(124,58,237,0.12); border:0.5px solid rgba(124,58,237,0.35); }
+  .quote-box p { font-family:'Amiri',serif; font-size:clamp(12px,3vw,15px); color:rgba(255,255,255,0.8); line-height:2; text-align:center; }
+  .levels-bar { padding:4px 16px 12px; }
+  .levels-lbl { font-size:13px; color:rgba(255,255,255,0.5); text-align:center; margin-bottom:8px; }
+  .levels-dots { display:flex; justify-content:center; gap:8px; }
+  .ldot { width:clamp(28px,7vw,34px); height:clamp(28px,7vw,34px); border-radius:50%; border:0.5px solid rgba(255,255,255,0.2); background:rgba(255,255,255,0.05); display:flex; align-items:center; justify-content:center; font-size:12px; color:rgba(255,255,255,0.4); cursor:pointer; transition:all 0.2s; font-family:'Tajawal',sans-serif; }
+  .ldot.active { background:#7c3aed; border-color:#7c3aed; color:#fff; font-weight:500; }
+  .ldot.done { background:rgba(4,120,87,0.7); border-color:#047857; color:#fff; }
+  .progress-bar { height:3px; background:rgba(255,255,255,0.1); margin:0 16px; border-radius:2px; overflow:hidden; }
+  .progress-fill { height:100%; border-radius:2px; transition:width 0.3s; }
+  .dhikr-center { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:16px 20px 24px; }
+  .dhikr-big { font-family:'Amiri',serif; font-size:clamp(24px,7vw,36px); font-weight:700; color:#fff; text-align:center; line-height:1.7; margin-bottom:24px; }
+  .counter-ring { position:relative; width:clamp(150px,42vw,200px); height:clamp(150px,42vw,200px); cursor:pointer; user-select:none; margin-bottom:10px; touch-action:manipulation; }
+  .counter-ring svg { width:100%; height:100%; }
+  .ring-num { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; pointer-events:none; }
+  .ring-num .n { font-size:clamp(38px,11vw,52px); font-weight:500; color:#fff; line-height:1; }
+  .ring-num .d { font-size:12px; color:rgba(255,255,255,0.4); margin-top:4px; }
+  .tap-hint { font-size:14px; color:rgba(255,255,255,0.45); margin-bottom:18px; }
+  .complete-box { display:none; text-align:center; padding:16px 18px; background:rgba(4,120,87,0.15); border:0.5px solid rgba(4,120,87,0.4); border-radius:14px; width:100%; max-width:320px; }
+  .complete-box .ctitle { font-family:'Amiri',serif; font-size:20px; color:#fff; margin-bottom:6px; }
+  .complete-box .csub { font-size:13px; color:rgba(255,255,255,0.55); margin-bottom:14px; }
+  .all-done-box { display:none; text-align:center; padding:30px 20px; width:100%; max-width:340px; }
+  .all-done-box .atitle { font-family:'Amiri',serif; font-size:clamp(22px,6vw,30px); color:#f0d080; margin-bottom:10px; }
+  .all-done-box .asub { font-size:15px; color:rgba(255,255,255,0.6); line-height:2; margin-bottom:20px; }
+  .act-btn { width:100%; padding:12px; font-family:'Tajawal',sans-serif; font-size:15px; border-radius:10px; border:0.5px solid rgba(255,255,255,0.25); background:rgba(255,255,255,0.08); color:#fff; cursor:pointer; margin-bottom:8px; }
+  .act-btn:active { background:rgba(255,255,255,0.18); }
+  .reset-btn { background:transparent; border:none; color:rgba(255,255,255,0.35); font-family:'Tajawal',sans-serif; font-size:13px; cursor:pointer; padding:6px; }
+  .pulse-anim { animation:pulse 0.15s ease; }
+  @keyframes pulse { 0%{transform:scale(1)} 50%{transform:scale(0.93)} 100%{transform:scale(1)} }
+
+  /* SALAH PAGE */
+  .salah-page { position:relative; z-index:1; flex:1; display:flex; flex-direction:column; padding:0 0 24px; }
+  .salah-content { padding:0 16px; }
+  .setup-section { margin-bottom:1.2rem; }
+  .setup-title { font-family:'Amiri',serif; font-size:16px; color:rgba(255,255,255,0.8); margin-bottom:12px; text-align:center; }
+  .level-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:10px; margin-bottom:14px; }
+  .level-card { background:rgba(255,255,255,0.06); border:0.5px solid rgba(255,255,255,0.15); border-radius:12px; padding:14px 10px; cursor:pointer; text-align:center; transition:all 0.2s; }
+  .level-card.selected { border:2px solid #7c3aed; background:rgba(124,58,237,0.15); }
+  .level-card .licon { font-size:20px; margin-bottom:6px; }
+  .level-card .lname { font-size:14px; font-weight:500; color:#fff; margin-bottom:4px; }
+  .level-card .ldesc2 { font-size:13px; color:rgba(255,255,255,0.65); line-height:1.5; }
+  .purple-btn { width:100%; padding:12px; font-family:'Tajawal',sans-serif; font-size:15px; border-radius:10px; border:none; background:#7c3aed; color:#fff; cursor:pointer; margin-bottom:1rem; }
+  .purple-btn:disabled { opacity:0.4; cursor:not-allowed; }
+  .stats-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:10px; margin-bottom:14px; }
+  .stat-box { background:rgba(255,255,255,0.07); border-radius:10px; padding:12px; text-align:center; }
+  .stat-box .sv { font-size:24px; font-weight:500; color:#fff; line-height:1; }
+  .stat-box .sl { font-size:13px; color:rgba(255,255,255,0.6); margin-top:4px; }
+  .day-card2 { background:rgba(255,255,255,0.06); border:0.5px solid rgba(255,255,255,0.15); border-radius:12px; padding:14px; margin-bottom:12px; }
+  .day-top { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; }
+  .day-top span { font-size:14px; color:#fff; font-weight:500; }
+  .day-top .dpts { font-size:12px; color:rgba(255,255,255,0.5); background:rgba(255,255,255,0.08); padding:3px 8px; border-radius:8px; }
+  .prayers-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:6px; }
+  .p-btn { display:flex; flex-direction:column; align-items:center; gap:4px; padding:8px 2px; border-radius:8px; border:0.5px solid rgba(255,255,255,0.15); background:rgba(255,255,255,0.05); cursor:pointer; font-size:12px; color:rgba(255,255,255,0.5); font-family:'Tajawal',sans-serif; transition:all 0.15s; }
+  .p-btn i { font-size:16px; }
+  .p-btn.done { background:rgba(124,58,237,0.2); border-color:#7c3aed; color:#c4b5fd; }
+  .bonus-tag { display:inline-block; font-size:13px; padding:4px 10px; border-radius:8px; background:rgba(240,208,128,0.15); color:#f0d080; margin-top:8px; }
+  .streak-section { background:rgba(255,255,255,0.06); border:0.5px solid rgba(255,255,255,0.12); border-radius:12px; padding:12px 14px; margin-bottom:12px; }
+  .streak-title { font-size:14px; color:rgba(255,255,255,0.6); margin-bottom:8px; }
+  .dots-wrap { display:flex; flex-wrap:wrap; gap:4px; }
+  .sdot { width:13px; height:13px; border-radius:3px; background:rgba(255,255,255,0.08); border:0.5px solid rgba(255,255,255,0.1); }
+  .sdot.full { background:#7c3aed; border-color:#7c3aed; }
+  .sdot.partial { background:rgba(124,58,237,0.35); border-color:rgba(124,58,237,0.35); }
+  .sdot.today { border:2px solid #f0d080; }
+  .badges-section { margin-bottom:14px; }
+  .badges-title { font-size:14px; color:rgba(255,255,255,0.6); margin-bottom:8px; }
+  .badges-wrap { display:flex; flex-wrap:wrap; gap:8px; }
+  .badge2 { display:flex; align-items:center; gap:5px; background:rgba(255,255,255,0.06); border:0.5px solid rgba(255,255,255,0.12); border-radius:8px; padding:6px 10px; font-size:13px; color:rgba(255,255,255,0.55); }
+  .badge2.earned { background:rgba(240,208,128,0.1); border-color:rgba(240,208,128,0.4); color:#f0d080; }
+  .badge2 i { font-size:14px; }
+  .sim-btn { width:100%; padding:10px; font-family:'Tajawal',sans-serif; font-size:13px; border-radius:10px; border:0.5px solid rgba(255,255,255,0.2); background:transparent; color:rgba(255,255,255,0.5); cursor:pointer; }
+  .edu-card { background:rgba(255,255,255,0.05); border:0.5px solid rgba(255,255,255,0.1); border-radius:12px; padding:14px; margin-bottom:12px; }
+  .edu-section-title { font-family:'Amiri',serif; font-size:15px; color:#c4b5fd; margin-bottom:10px; font-weight:700; }
+  .edu-item { display:flex; gap:8px; margin-bottom:8px; font-size:13px; color:rgba(255,255,255,0.75); line-height:1.7; }
+  .edu-dot { flex-shrink:0; margin-top:2px; }
+  .duaa-box { background:rgba(255,255,255,0.04); border-radius:10px; padding:12px; display:flex; gap:10px; align-items:flex-start; }
+  .duaa-num { font-family:'Amiri',serif; font-size:18px; color:#f0d080; flex-shrink:0; line-height:1; margin-top:2px; }
+  .duaa-text { font-family:'Amiri',serif; font-size:15px; color:rgba(255,255,255,0.9); line-height:2; }
+  .duaa-source { font-size:11px; color:rgba(255,255,255,0.35); margin-top:6px; font-family:'Tajawal',sans-serif; }
+  .duaa-card { display:flex; gap:10px; align-items:flex-start; background:rgba(255,255,255,0.04); border:0.5px solid rgba(255,255,255,0.1); border-radius:10px; padding:12px; margin-bottom:10px; }
+  .duaa-tab { padding:6px 14px; border-radius:20px; border:0.5px solid rgba(255,255,255,0.15); background:rgba(255,255,255,0.05); color:rgba(255,255,255,0.5); font-family:'Tajawal',sans-serif; font-size:13px; cursor:pointer; white-space:nowrap; transition:all 0.2s; }
+  .duaa-tab.active-tab { background:rgba(240,208,128,0.15); border-color:rgba(240,208,128,0.4); color:#f0d080; }
+  .stabs { display:flex; gap:6px; overflow-x:auto; padding-bottom:8px; margin-bottom:12px; scrollbar-width:none; }
+  .stabs::-webkit-scrollbar { display:none; }
+  .stab { flex-shrink:0; padding:6px 12px; border-radius:20px; border:0.5px solid rgba(255,255,255,0.15); background:rgba(255,255,255,0.05); font-size:12px; color:rgba(255,255,255,0.5); cursor:pointer; font-family:'Tajawal',sans-serif; white-space:nowrap; transition:all 0.15s; }
+  .stab.on { background:rgba(4,120,87,0.25); border-color:rgba(4,120,87,0.5); color:#6ee7b7; }
+  .spanel { display:none; animation:fadeIn 0.2s ease; }
+  .spanel.on { display:block; }
+  .sinfo-card { background:rgba(255,255,255,0.05); border:0.5px solid rgba(255,255,255,0.1); border-radius:10px; padding:10px 12px; margin-bottom:0; }
+  .srow-card { background:rgba(255,255,255,0.05); border:0.5px solid rgba(255,255,255,0.1); border-radius:10px; padding:10px 12px; margin-bottom:8px; }
+  .si-icon { font-size:20px; margin-bottom:4px; }
+  .si-title { font-family:'Amiri',serif; font-size:14px; color:#fff; font-weight:700; margin-bottom:3px; }
+  .si-desc { font-size:12px; color:rgba(255,255,255,0.6); line-height:1.7; }
+  .si-ayah { font-family:'Amiri',serif; font-size:13px; color:#f0d080; line-height:1.9; margin-top:4px; }
+  .sinfo-ayah { font-family:'Amiri',serif; font-size:14px; color:#f0d080; text-align:center; padding:12px; background:rgba(4,120,87,0.1); border:0.5px solid rgba(4,120,87,0.3); border-radius:10px; margin-top:10px; line-height:1.9; }
+  .snum-item { display:flex; gap:10px; align-items:center; background:rgba(255,255,255,0.04); border:0.5px solid rgba(255,255,255,0.08); border-radius:8px; padding:8px 12px; }
+  .snum-badge { flex-shrink:0; width:26px; height:26px; border-radius:50%; background:rgba(4,120,87,0.25); color:#6ee7b7; display:flex; align-items:center; justify-content:center; font-family:'Amiri',serif; font-size:13px; }
+  .effect-card { background:rgba(240,208,128,0.06); border:0.5px solid rgba(240,208,128,0.25); border-radius:12px; padding:12px 14px; margin-bottom:10px; animation:fadeIn 0.5s ease; }
+  .effect-card .e-phase { font-size:12px; color:#f0d080; margin-bottom:4px; letter-spacing:0.5px; }
+  .effect-card .e-title { font-family:'Amiri',serif; font-size:15px; color:#fff; margin-bottom:6px; font-weight:700; }
+  .effect-card .e-desc { font-size:14px; color:rgba(255,255,255,0.65); line-height:1.8; }
+  .effect-card .e-ayah { font-family:'Amiri',serif; font-size:13px; color:#f0d080; margin-top:8px; line-height:2; border-top:0.5px solid rgba(240,208,128,0.15); padding-top:8px; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+  /* YAQEEN */
+  .yaqeen-content { position:relative; z-index:1; padding:0 16px 40px; }
+  .y-intro { font-family:'Amiri',serif; font-size:clamp(16px,4vw,20px); color:rgba(255,255,255,0.8); line-height:2.2; text-align:center; margin:10px 0 20px; }
+  .y-card { background:rgba(14,116,144,0.1); border:0.5px solid rgba(14,116,144,0.3); border-radius:12px; padding:14px; margin-bottom:12px; }
+  .y-card-title { font-family:'Amiri',serif; font-size:18px; color:#67e8f9; margin-bottom:10px; font-weight:700; }
+  .y-item { display:flex; gap:8px; margin-bottom:8px; font-size:16px; color:rgba(255,255,255,0.75); line-height:1.8; }
+  .y-section-title { font-family:'Amiri',serif; font-size:20px; color:#f0d080; margin:20px 0 12px; text-align:center; }
+  .quiz-card { background:rgba(255,255,255,0.05); border:0.5px solid rgba(255,255,255,0.12); border-radius:12px; padding:14px; margin-bottom:12px; }
+  .quiz-q { font-family:'Amiri',serif; font-size:17px; color:#fff; margin-bottom:12px; line-height:1.8; }
+  .quiz-opt { display:flex; align-items:flex-start; gap:10px; padding:10px 12px; border-radius:8px; border:0.5px solid rgba(255,255,255,0.1); background:rgba(255,255,255,0.04); margin-bottom:8px; cursor:pointer; transition:all 0.2s; font-size:15px; color:rgba(255,255,255,0.7); line-height:1.7; font-family:'Tajawal',sans-serif; text-align:right; width:100%; }
+  .quiz-opt:hover { background:rgba(14,116,144,0.15); border-color:rgba(14,116,144,0.4); }
+  .quiz-opt.selected { background:rgba(14,116,144,0.2); border-color:#0e7490; color:#fff; }
+  .quiz-opt .opt-num { flex-shrink:0; width:22px; height:22px; border-radius:50%; border:0.5px solid rgba(255,255,255,0.2); display:flex; align-items:center; justify-content:center; font-size:11px; margin-top:2px; }
+  .quiz-opt.selected .opt-num { background:#0e7490; border-color:#0e7490; color:#fff; }
+  .result-card { border-radius:14px; padding:18px; margin:14px 0; display:none; animation:fadeIn 0.5s ease; }
+  .result-card.r1 { background:rgba(180,83,9,0.12); border:0.5px solid rgba(180,83,9,0.4); }
+  .result-card.r2 { background:rgba(14,116,144,0.12); border:0.5px solid rgba(14,116,144,0.4); }
+  .result-card.r3 { background:rgba(4,120,87,0.12); border:0.5px solid rgba(4,120,87,0.4); }
+  .result-title { font-family:'Amiri',serif; font-size:18px; color:#f0d080; margin-bottom:8px; }
+  .result-desc { font-size:16px; color:rgba(255,255,255,0.75); line-height:1.9; margin-bottom:12px; }
+  .result-wasiya { background:rgba(255,255,255,0.05); border-radius:10px; padding:12px; font-size:15px; color:rgba(255,255,255,0.8); line-height:1.9; }
+  .result-wasiya strong { color:#f0d080; display:block; margin-bottom:6px; font-family:'Amiri',serif; font-size:17px; }
+  .share-card { background:rgba(240,208,128,0.06); border:0.5px solid rgba(240,208,128,0.2); border-radius:12px; padding:16px; margin-top:16px; }
+  .share-title { font-family:'Amiri',serif; font-size:15px; color:#f0d080; margin-bottom:8px; }
+  .share-q { font-size:16px; color:rgba(255,255,255,0.7); line-height:1.8; margin-bottom:12px; }
+  .share-textarea { width:100%; background:rgba(255,255,255,0.05); border:0.5px solid rgba(255,255,255,0.15); border-radius:8px; padding:10px 12px; color:#fff; font-family:'Amiri',serif; font-size:13px; line-height:1.8; resize:none; min-height:80px; }
+  .share-btn { width:100%; margin-top:10px; padding:10px; font-family:'Tajawal',sans-serif; font-size:14px; border-radius:8px; border:none; background:#0e7490; color:#fff; cursor:pointer; }
+  .story-item { background:rgba(255,255,255,0.04); border-radius:8px; padding:10px 12px; margin-bottom:8px; font-family:'Amiri',serif; font-size:15px; color:rgba(255,255,255,0.75); line-height:1.8; border-right:2px solid #0e7490; animation:fadeIn 0.4s ease; }
+  .dhikr-effect-card { display:flex; gap:10px; align-items:flex-start; background:rgba(124,58,237,0.08); border:0.5px solid rgba(124,58,237,0.25); border-radius:10px; padding:10px 12px; }
+  .dhikr-effect-card.de-reward { background:rgba(124,58,237,0.1); border-color:rgba(124,58,237,0.3); }
+  .dhikr-effect-card.de-istighfar { background:rgba(4,120,87,0.08); border-color:rgba(4,120,87,0.25); }
+  .de-icon { font-size:16px; flex-shrink:0; margin-top:2px; }
+  .de-title { font-family:'Amiri',serif; font-size:16px; color:#fff; margin-bottom:4px; }
+  .de-ayah { font-family:'Amiri',serif; font-size:14px; color:#c4b5fd; line-height:1.8; }
+  .dhikr-effect-card.de-istighfar .de-ayah { color:#6ee7b7; }
+
+  .rz-slider { position:relative; overflow:hidden; border-radius:12px; margin-bottom:14px; }
+  .rz-slide { display:none; animation:fadeIn 0.3s ease; }
+  .rz-slide.rz-active { display:block; }
+  .rz-slide-title { font-family:'Amiri',serif; font-size:15px; color:#f0d080; text-align:center; margin-bottom:10px; }
+  .rz-nav { display:flex; align-items:center; justify-content:center; gap:16px; margin-top:12px; }
+  .rz-arrow { width:38px; height:38px; border-radius:50%; border:0.5px solid rgba(255,255,255,0.2); background:rgba(255,255,255,0.08); color:#fff; font-size:22px; cursor:pointer; display:flex; align-items:center; justify-content:center; }
+  .rz-arrow:active { background:rgba(255,255,255,0.18); }
+  .rz-dots { display:flex; gap:8px; align-items:center; }
+  .rz-dot { width:8px; height:8px; border-radius:50%; border:none; background:rgba(255,255,255,0.2); cursor:pointer; transition:all 0.2s; padding:0; }
+  .rz-dot.rz-dot-on { background:#f0d080; width:20px; border-radius:4px; }
+
+  .rz-slider { position:relative; overflow:hidden; border-radius:12px; margin-bottom:14px; }
+  .rz-slide { display:none; animation:fadeIn 0.3s ease; }
+  .rz-slide.rz-active { display:block; }
+  .rz-slide-title { font-family:'Amiri',serif; font-size:15px; color:#f0d080; text-align:center; margin-bottom:10px; }
+  .rz-nav { display:flex; align-items:center; justify-content:center; gap:16px; margin-top:12px; }
+  .rz-arrow { width:38px; height:38px; border-radius:50%; border:0.5px solid rgba(255,255,255,0.2); background:rgba(255,255,255,0.08); color:#fff; font-size:22px; cursor:pointer; display:flex; align-items:center; justify-content:center; }
+  .rz-arrow:active { background:rgba(255,255,255,0.18); }
+  .rz-dots { display:flex; gap:8px; align-items:center; }
+  .rz-dot { width:8px; height:8px; border-radius:50%; border:none; background:rgba(255,255,255,0.2); cursor:pointer; transition:all 0.2s; padding:0; }
+  .rz-dot.rz-dot-on { background:#f0d080; width:20px; border-radius:4px; }
+</style>
+</head>
+<body>
+<div class="stars" id="stars"></div>
+<div class="glow-orb orb1"></div>
+<div class="glow-orb orb2"></div>
+
+<!-- HOME -->
+<div class="page active" id="page-home">
+  <div class="hero">
+    <div class="title-ar">أبواب الحياة الطيبة</div>
+    <div class="subtitle-ar">اختر بابك.. وابدأ رحلتك</div>
+    <div class="scene">
+      <div class="doors-row">
+        <div class="door-wrap" onclick="showPage('page-dhikr');initDhikr()">
+          <div class="door-label">باب الذكر</div>
+          <div class="door door-d1"><div class="door-arch"></div><div class="door-inner"><div class="door-icon">📿</div><div class="door-knob"></div></div></div>
+        </div>
+        <div class="door-wrap" onclick="showPage('page-yaqeen')">
+          <div class="door-label">باب اليقين</div>
+          <div class="door door-d2"><div class="door-arch"></div><div class="door-inner"><div class="door-icon">🌙</div><div class="door-knob"></div></div></div>
+        </div>
+        <div class="door-wrap" onclick="showPage('page-elaqat')">
+          <div class="door-label">باب العلاقات</div>
+          <div class="door door-d3"><div class="door-arch"></div><div class="door-inner"><div class="door-icon">🤍</div><div class="door-knob"></div></div></div>
+        </div>
+        <div class="door-wrap" onclick="showPage('page-salah');initSalah()">
+          <div class="door-label">باب الصلاة</div>
+          <div class="door door-d4"><div class="door-arch"></div><div class="door-inner"><div class="door-icon">🕌</div><div class="door-knob"></div></div></div>
+        </div>
+        <div class="door-wrap" onclick="showPage('page-rizq')">
+          <div class="door-label">باب الرزق</div>
+          <div class="door door-d5"><div class="door-arch"></div><div class="door-inner"><div class="door-icon">🌿</div><div class="door-knob"></div></div></div>
+        </div>
+      </div>
+      <div class="ground"></div>
+      <div class="floor-glow"></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- DHIKR -->
+<div class="page" id="page-dhikr">
+  <div class="dhikr-page">
+    <div class="top-nav">
+      <button class="back-btn" onclick="showPage('page-home')">← رجوع</button>
+      <div class="nav-title">باب الذكر</div>
+      <div style="width:80px"></div>
+    </div>
+    <div class="quote-box">
+      <p>أربع مفاتيح للحياة الطيبة: ذكرٌ يطمئن القلب، وحمدٌ يزيد النعم،<br>واستغفارٌ يفتح الأبواب، وصلاةٌ على النبي ﷺ تملأ الحياة بركة.</p>
+    </div>
+
+    <!-- DHIKR SETUP -->
+    <div id="dhikr-setup" style="padding:0 16px">
+
+      <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin:16px 0 14px">
+        <div style="font-family:'Amiri',serif;font-size:16px;color:rgba(255,255,255,0.8)">اختر مستواك في الذكر</div>
+        <button onclick="toggleDhikrTip()" style="display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:20px;border:0.5px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.08);cursor:pointer;font-size:12px;color:rgba(255,255,255,0.6);font-family:'Tajawal',sans-serif;">
+          <i class="ti ti-info-circle" aria-hidden="true" style="font-size:15px"></i>
+          ما معنى المستويات؟
+        </button>
+      </div>
+
+      <div id="dhikr-tip" style="display:none;background:rgba(255,255,255,0.06);border:0.5px solid rgba(255,255,255,0.15);border-radius:12px;padding:14px 16px;margin-bottom:14px;animation:fadeIn 0.2s ease">
+        <div style="font-family:'Amiri',serif;font-size:14px;color:#f0d080;margin-bottom:10px;">مستوحاة من حديث جبريل ﷺ</div>
+        <div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:8px;font-size:13px;color:rgba(255,255,255,0.7);line-height:1.7">
+          <span style="flex-shrink:0;font-size:11px;padding:2px 8px;border-radius:8px;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.6);border:0.5px solid rgba(255,255,255,0.15);">مسلم</span>
+          أن تُقيم الذكر — الالتزام الظاهر
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:8px;font-size:13px;color:rgba(255,255,255,0.7);line-height:1.7">
+          <span style="flex-shrink:0;font-size:11px;padding:2px 8px;border-radius:8px;background:rgba(14,116,144,0.3);color:#67e8f9;border:0.5px solid rgba(14,116,144,0.4);">مؤمن</span>
+          أن يسكن الذكر في قلبك — الثبات الداخلي
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:8px;font-size:13px;color:rgba(255,255,255,0.7);line-height:1.7">
+          <span style="flex-shrink:0;font-size:11px;padding:2px 8px;border-radius:8px;background:rgba(4,120,87,0.3);color:#6ee7b7;border:0.5px solid rgba(4,120,87,0.4);">محسن</span>
+          أن تذكر الله كأنك تراه — مرتبة المراقبة
+        </div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.35);margin-top:10px;border-top:0.5px solid rgba(255,255,255,0.1);padding-top:8px;font-family:'Amiri',serif;">﴿ قال: هذا جبريل أتاكم يُعلِّمكم دينكم ﴾</div>
+      </div>
+      <div class="level-grid" id="dhikr-level-grid">
+        <div class="level-card" onclick="dPickLevel(0)">
+          <div class="licon">🌱</div>
+          <div class="lname">مسلم</div>
+          <div class="ldesc2">33 مرة لكل ذكر</div>
+        </div>
+        <div class="level-card" onclick="dPickLevel(1)">
+          <div class="licon">🌿</div>
+          <div class="lname">مؤمن</div>
+          <div class="ldesc2">66 مرة لكل ذكر</div>
+        </div>
+        <div class="level-card" onclick="dPickLevel(2)" style="grid-column:span 2">
+          <div class="licon">⭐</div>
+          <div class="lname">محسن</div>
+          <div class="ldesc2">100 مرة لكل ذكر</div>
+        </div>
+      </div>
+      <button class="purple-btn" id="dhikr-start-btn" onclick="dStart()" disabled>ابدأ الذكر ←</button>
+    </div>
+
+    <!-- DHIKR GAME -->
+    <div id="dhikr-game" style="display:none;flex-direction:column;flex:1">
+      <div class="levels-bar">
+        <div class="levels-lbl">الأذكار</div>
+        <div class="levels-dots" id="ldots"></div>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" id="prog" style="width:0%"></div></div>
+      <div class="dhikr-center">
+        <div id="game-area" style="display:flex;flex-direction:column;align-items:center;width:100%">
+          <div style="font-size:11px;color:rgba(255,255,255,0.35);margin-bottom:6px" id="dhikr-target-lbl">33 مرة</div>
+          <div class="dhikr-big" id="dhikr-text">الحمد لله</div>
+          <div class="counter-ring" id="ring">
+            <svg viewBox="0 0 180 180">
+              <circle cx="90" cy="90" r="76" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="7"/>
+              <circle id="arc" cx="90" cy="90" r="76" fill="none" stroke="#7c3aed" stroke-width="7" stroke-dasharray="477.5" stroke-dashoffset="477.5" stroke-linecap="round" transform="rotate(-90 90 90)" style="transition:stroke-dashoffset 0.2s"/>
+            </svg>
+            <div class="ring-num"><span class="n" id="cnt">0</span><span class="d" id="denom">من 33</span></div>
+          </div>
+          <div class="tap-hint">اضغط على الدائرة للعد</div>
+          <div class="complete-box" id="complete-box">
+            <div class="ctitle">أحسنت 🌿</div>
+            <div class="csub">أكملت المستوى</div>
+            <button class="act-btn" id="next-btn" onclick="dNextLevel()">الذكر التالي ←</button>
+            <button class="reset-btn" onclick="dResetLevel()">إعادة هذا الذكر</button>
+          </div>
+        </div>
+
+        <!-- كروت المكافأة بعد اكتمال الأذكار -->
+        <div class="all-done-box" id="all-done-box">
+          <div class="atitle">ما شاء الله 🌸</div>
+          <div class="asub">أكملت جميع الأذكار<br>بارك الله فيك وجعلها في موازين حسناتك</div>
+
+          <div style="width:100%;text-align:right;margin:16px 0 8px">
+            <div style="font-family:'Amiri',serif;font-size:14px;color:#f0d080;">✦ ثمار الذكر</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px;width:100%;margin-bottom:16px">
+            <div class="dhikr-effect-card de-reward">
+              <span class="de-icon">🌿</span>
+              <div><div class="de-title">الذِّكر يهزم الغفلة</div><div class="de-ayah">﴿ وَلَا تَكُن مِّنَ ٱلۡغَٰفِلِينَ ﴾</div></div>
+            </div>
+            <div class="dhikr-effect-card de-reward">
+              <span class="de-icon">🌿</span>
+              <div><div class="de-title">الذِّكر يجلب معية الله وتوفيقه</div><div class="de-ayah">﴿ فَٱذۡكُرُونِيٓ أَذۡكُرۡكُمۡ ﴾</div></div>
+            </div>
+            <div class="dhikr-effect-card de-reward">
+              <span class="de-icon">🌿</span>
+              <div><div class="de-title">الذِّكر يشرح الصدر ويبدد الهم</div><div class="de-ayah"></div></div>
+            </div>
+            <div class="dhikr-effect-card de-reward">
+              <span class="de-icon">🌿</span>
+              <div><div class="de-title">الذِّكر يملأ القلب نوراً وحياةً ويقيناً</div><div class="de-ayah"></div></div>
+            </div>
+          </div>
+
+          <div style="background:rgba(124,58,237,0.12);border:0.5px solid rgba(124,58,237,0.3);border-radius:12px;padding:14px;width:100%;margin-bottom:16px;text-align:center">
+            <div style="font-family:'Amiri',serif;font-size:13px;color:rgba(255,255,255,0.6);margin-bottom:8px;">فلا تملّ وردّد دائماً</div>
+            <div style="font-family:'Amiri',serif;font-size:15px;color:#fff;line-height:2;">🍃 سبحان الله، والحمد لله،<br>ولا إله إلا الله، والله أكبر</div>
+          </div>
+
+          <div style="width:100%;text-align:right;margin-bottom:8px">
+            <div style="font-family:'Amiri',serif;font-size:14px;color:#f0d080;">✦ ثمار الاستغفار</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px;width:100%;margin-bottom:16px">
+            <div class="dhikr-effect-card de-istighfar">
+              <span class="de-icon">🌿</span>
+              <div><div class="de-title">يهزم الذنب</div><div class="de-ayah">﴿ إِنَّهُۥ كَانَ غَفَّارٗا ﴾</div></div>
+            </div>
+            <div class="dhikr-effect-card de-istighfar">
+              <span class="de-icon">🌿</span>
+              <div><div class="de-title">يهزم القحط</div><div class="de-ayah">﴿ يُرۡسِلِ ٱلسَّمَآءَ عَلَيۡكُم مِّدۡرَارٗا ﴾</div></div>
+            </div>
+            <div class="dhikr-effect-card de-istighfar">
+              <span class="de-icon">🌿</span>
+              <div><div class="de-title">يهزم الفقر والعقم</div><div class="de-ayah">﴿ وَيُمۡدِدۡكُم بِأَمۡوَٰلٖ وَبَنِينَ ﴾</div></div>
+            </div>
+            <div class="dhikr-effect-card de-istighfar">
+              <span class="de-icon">🌿</span>
+              <div><div class="de-title">يهزم الضعف</div><div class="de-ayah">﴿ وَيَزِدۡكُمۡ قُوَّةً إِلَىٰ قُوَّتِكُمۡ ﴾</div></div>
+            </div>
+            <div class="dhikr-effect-card de-istighfar">
+              <span class="de-icon">🌿</span>
+              <div><div class="de-title">يجلب رحمة ربك وودّه</div><div class="de-ayah">﴿ إِنَّ رَبِّي رَحِيمٞ وَدُودٞ ﴾</div></div>
+            </div>
+          </div>
+
+          <div style="background:rgba(4,120,87,0.1);border:0.5px solid rgba(4,120,87,0.3);border-radius:12px;padding:14px;width:100%;margin-bottom:20px;text-align:center">
+            <div style="font-family:'Amiri',serif;font-size:13px;color:rgba(255,255,255,0.6);margin-bottom:8px;">فلا تملّ وردّد دائماً</div>
+            <div style="font-family:'Amiri',serif;font-size:15px;color:#fff;line-height:2;">أستغفر الله العظيم وأتوب إليه</div>
+          </div>
+
+          <button class="act-btn" onclick="dRestartAll()">البدء من جديد</button>
+          <button class="reset-btn" onclick="dChangeLevel()">تغيير المستوى</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SALAH -->
+<div class="page" id="page-salah">
+  <div class="salah-page">
+    <div class="top-nav">
+      <button class="back-btn" onclick="showPage('page-home')">← رجوع</button>
+      <div class="nav-title">باب الصلاة</div>
+      <div style="width:80px"></div>
+    </div>
+    <div class="salah-content">
+
+      <!-- EDUCATIONAL CONTENT -->
+      <!-- SETUP -->
+      <div id="salah-setup">
+
+        <!-- معلومات الصلاة التفاعلية -->
+        <div style="margin-bottom:16px">
+          <div style="font-family:'Amiri',serif;font-size:16px;color:#f0d080;text-align:center;margin-bottom:12px;">الصلاة — عماد الدين</div>
+          <div class="stabs" id="stabs">
+            <button class="stab on" onclick="sSw(this,'st1')">الأوقات</button>
+            <button class="stab" onclick="sSw(this,'st2')">الأركان</button>
+            <button class="stab" onclick="sSw(this,'st3')">الفوائد</button>
+            <button class="stab" onclick="sSw(this,'st4')">شروط القبول</button>
+            <button class="stab" onclick="sSw(this,'st5')">كيف تحافظ</button>
+          </div>
+
+          <!-- الأوقات -->
+          <div class="spanel on" id="st1">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+              <div class="sinfo-card"><div class="si-icon">🌅</div><div class="si-title">الفجر</div><div class="si-desc">من طلوع الفجر الصادق إلى شروق الشمس</div></div>
+              <div class="sinfo-card"><div class="si-icon">🌤</div><div class="si-title">الظهر</div><div class="si-desc">من زوال الشمس إلى أن يصير ظل كل شيء مثله</div></div>
+              <div class="sinfo-card"><div class="si-icon">☀️</div><div class="si-title">العصر</div><div class="si-desc">من نهاية وقت الظهر إلى اصفرار الشمس</div></div>
+              <div class="sinfo-card"><div class="si-icon">🌇</div><div class="si-title">المغرب</div><div class="si-desc">من غروب الشمس إلى اختفاء الشفق</div></div>
+            </div>
+            <div class="sinfo-card" style="text-align:center;margin-top:8px"><div class="si-icon">🌙</div><div class="si-title">العشاء</div><div class="si-desc">من اختفاء الشفق إلى نصف الليل تقريباً</div></div>
+            <div class="sinfo-ayah">﴿ إِنَّ الصَّلَاةَ كَانَتْ عَلَى الْمُؤْمِنِينَ كِتَابًا مَوْقُوتًا ﴾</div>
+          </div>
+
+          <!-- الأركان -->
+          <div class="spanel" id="st2">
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <div class="snum-item"><div class="snum-badge">١</div><div class="si-desc">القيام (للقادر)</div></div>
+              <div class="snum-item"><div class="snum-badge">٢</div><div class="si-desc">تكبيرة الإحرام</div></div>
+              <div class="snum-item"><div class="snum-badge">٣</div><div class="si-desc">قراءة الفاتحة</div></div>
+              <div class="snum-item"><div class="snum-badge">٤</div><div class="si-desc">الركوع</div></div>
+              <div class="snum-item"><div class="snum-badge">٥</div><div class="si-desc">الرفع من الركوع</div></div>
+              <div class="snum-item"><div class="snum-badge">٦</div><div class="si-desc">السجود على الأعضاء السبعة</div></div>
+              <div class="snum-item"><div class="snum-badge">٧</div><div class="si-desc">الرفع من السجود</div></div>
+              <div class="snum-item"><div class="snum-badge">٨</div><div class="si-desc">الجلوس بين السجدتين</div></div>
+              <div class="snum-item"><div class="snum-badge">٩</div><div class="si-desc">الجلوس للتشهد الأخير</div></div>
+              <div class="snum-item"><div class="snum-badge">١٠</div><div class="si-desc">قراءة التشهد الأخير</div></div>
+              <div class="snum-item"><div class="snum-badge">١١</div><div class="si-desc">الصلاة على النبي ﷺ</div></div>
+              <div class="snum-item"><div class="snum-badge">١٢</div><div class="si-desc">التسليمتان</div></div>
+              <div class="snum-item"><div class="snum-badge">١٣</div><div class="si-desc">الترتيب</div></div>
+              <div class="snum-item"><div class="snum-badge">١٤</div><div class="si-desc">الموالاة</div></div>
+            </div>
+          </div>
+
+          <!-- الفوائد -->
+          <div class="spanel" id="st3">
+            <div class="srow-card"><div class="si-title">🤍 تقرّب العبد من ربه</div><div class="si-desc">الصلاة الصلة المباشرة بين العبد وربه</div></div>
+            <div class="srow-card"><div class="si-title">💚 تطمئن القلب</div><div class="si-ayah">﴿ أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ ﴾</div></div>
+            <div class="srow-card"><div class="si-title">🛡 تقي من الفحشاء والمنكر</div><div class="si-ayah">﴿ إِنَّ الصَّلَاةَ تَنْهَىٰ عَنِ الْفَحْشَاءِ وَالْمُنكَرِ ﴾</div></div>
+            <div class="srow-card"><div class="si-title">📈 ترفع الدرجات</div><div class="si-ayah">﴿ وَرَفَعْنَا لَكَ ذِكْرَكَ ﴾</div></div>
+            <div class="srow-card"><div class="si-title">✨ تكفّر الذنوب</div><div class="si-desc">«الصلوات الخمس، والجمعة إلى الجمعة، كفارات لما بينهن» — رواه مسلم</div></div>
+            <div class="srow-card"><div class="si-title">🌟 نور في القبر</div><div class="si-desc">«البشرى في الظلم، النور في القبر والصلاة» — رواه الترمذي</div></div>
+            <div class="srow-card"><div class="si-title">⏰ تنظّم الوقت</div><div class="si-desc">تربي النفس على الانضباط والالتزام بالمواعيد</div></div>
+          </div>
+
+          <!-- شروط القبول -->
+          <div class="spanel" id="st4">
+            <div class="srow-card"><div class="si-title">💛 الإخلاص</div><div class="si-desc">أن تكون لله تعالى وحده</div></div>
+            <div class="srow-card"><div class="si-title">👕 ستر العورة وطهارة الثوب والمكان</div></div>
+            <div class="srow-card"><div class="si-title">💧 طهارة البدن من الحدث والنجاسة</div><div class="si-desc">الوضوء أو الغسل حسب الحال</div></div>
+            <div class="srow-card"><div class="si-title">📖 متابعة السنة</div><div class="si-desc">أداء الصلاة كما كان يصليها النبي ﷺ</div></div>
+            <div class="srow-card"><div class="si-title">🕐 دخول الوقت</div><div class="si-desc">لا تصح الصلاة قبل وقتها</div></div>
+          </div>
+
+          <!-- كيف تحافظ -->
+          <div class="spanel" id="st5">
+            <div class="srow-card"><div class="si-title">⏰ أدِّ الصلوات في أوقاتها</div><div class="si-desc">ولا تؤخرها عن وقتها</div></div>
+            <div class="srow-card"><div class="si-title">💧 توضّأ بخشوع</div><div class="si-desc">واستحضر نية الصلاة قبل الدخول فيها</div></div>
+            <div class="srow-card"><div class="si-title">👥 اختر الصحبة الصالحة</div><div class="si-desc">التي تعينك على الصلاة وتذكّرك بها</div></div>
+            <div class="srow-card"><div class="si-title">📖 اجعل لك ورداً يومياً</div><div class="si-desc">من القرآن والدعاء يربط قلبك بالله</div></div>
+            <div class="srow-card"><div class="si-title">🤲 تذكّر عظمة الله وخشيته</div><div class="si-desc">ادعُ الله أن يثبّتك على الصلاة</div></div>
+            <div class="sinfo-ayah">«أرحنا بها يا بلال» — قال رسول الله ﷺ</div>
+          </div>
+        </div>
+
+        <!-- زرار أدعية الصلاة في الأعلى -->
+        <button onclick="toggleSalahDuaa()" style="width:100%;display:flex;align-items:center;justify-content:center;gap:10px;padding:16px;border-radius:14px;border:1px solid rgba(240,208,128,0.5);background:rgba(240,208,128,0.1);cursor:pointer;font-family:'Amiri',serif;font-size:17px;color:#f0d080;margin-bottom:16px;box-shadow:0 4px 20px rgba(240,208,128,0.1);">
+          <i class="ti ti-book" aria-hidden="true" style="font-size:22px"></i>
+          📖 أدعية أثناء الصلاة
+          <i class="ti ti-chevron-down" id="duaa-chevron" aria-hidden="true" style="font-size:16px;margin-right:auto;transition:transform 0.2s"></i>
+        </button>
+
+        <div id="salah-duaa-panel" style="display:none;margin-bottom:16px;animation:fadeIn 0.25s ease">
+          <div style="display:flex;gap:8px;margin-bottom:12px;overflow-x:auto;padding-bottom:4px">
+            <button class="duaa-tab active-tab" onclick="showDuaaTab('istiftah',this)">الاستفتاح</button>
+            <button class="duaa-tab" onclick="showDuaaTab('rukoo',this)">الركوع</button>
+            <button class="duaa-tab" onclick="showDuaaTab('sujood',this)">السجود</button>
+          </div>
+          <div id="tab-istiftah">
+            <div class="duaa-card"><div class="duaa-num">١</div><div><div class="duaa-text">سُبْحَانَكَ اللَّهُمَّ وَبِحَمْدِكَ، وَتَبَارَكَ اسْمُكَ، وَتَعَالَى جَدُّكَ، وَلَا إِلَهَ غَيْرُكَ.</div><div class="duaa-source">رواه أبو داود والترمذي</div></div></div>
+            <div class="duaa-card"><div class="duaa-num">٢</div><div><div class="duaa-text">اللَّهُمَّ بَاعِدْ بَيْنِي وَبَيْنَ خَطَايَايَ كَمَا بَاعَدْتَ بَيْنَ الْمَشْرِقِ وَالْمَغْرِبِ، اللَّهُمَّ نَقِّنِي مِنْ خَطَايَايَ كَمَا يُنَقَّى الثَّوْبُ الْأَبْيَضُ مِنَ الدَّنَسِ، اللَّهُمَّ اغْسِلْنِي مِنْ خَطَايَايَ بِالْمَاءِ وَالثَّلْجِ وَالْبَرَدِ.</div><div class="duaa-source">متفق عليه</div></div></div>
+            <div class="duaa-card"><div class="duaa-num">٣</div><div><div class="duaa-text">وَجَّهْتُ وَجْهِيَ لِلَّذِي فَطَرَ السَّمَاوَاتِ وَالْأَرْضَ حَنِيفًا، وَمَا أَنَا مِنَ الْمُشْرِكِينَ، إِنَّ صَلَاتِي وَنُسُكِي وَمَحْيَايَ وَمَمَاتِي لِلَّهِ رَبِّ الْعَالَمِينَ.</div><div class="duaa-source">رواه مسلم</div></div></div>
+          </div>
+          <div id="tab-rukoo" style="display:none">
+            <div class="duaa-card"><div class="duaa-num">١</div><div><div class="duaa-text">سُبْحَانَ رَبِّيَ الْعَظِيمِ.</div><div class="duaa-source">رواه أبو داود — يقالها ثلاث مرات</div></div></div>
+            <div class="duaa-card"><div class="duaa-num">٢</div><div><div class="duaa-text">سُبْحَانَكَ اللَّهُمَّ رَبَّنَا وَبِحَمْدِكَ، اللَّهُمَّ اغْفِرْ لِي.</div><div class="duaa-source">متفق عليه</div></div></div>
+            <div class="duaa-card"><div class="duaa-num">٣</div><div><div class="duaa-text">سُبُّوحٌ قُدُّوسٌ، رَبُّ الْمَلَائِكَةِ وَالرُّوحِ.</div><div class="duaa-source">رواه مسلم</div></div></div>
+            <div class="duaa-card"><div class="duaa-num">٤</div><div><div class="duaa-text">اللَّهُمَّ لَكَ رَكَعْتُ، وَبِكَ آمَنْتُ، وَلَكَ أَسْلَمْتُ، خَشَعَ لَكَ سَمْعِي وَبَصَرِي وَمُخِّي وَعَظْمِي وَعَصَبِي.</div><div class="duaa-source">رواه مسلم</div></div></div>
+          </div>
+          <div id="tab-sujood" style="display:none">
+            <div class="duaa-card"><div class="duaa-num">١</div><div><div class="duaa-text">سُبْحَانَ رَبِّيَ الْأَعْلَى.</div><div class="duaa-source">رواه أبو داود — يقالها ثلاث مرات</div></div></div>
+            <div class="duaa-card"><div class="duaa-num">٢</div><div><div class="duaa-text">سُبْحَانَكَ اللَّهُمَّ رَبَّنَا وَبِحَمْدِكَ، اللَّهُمَّ اغْفِرْ لِي.</div><div class="duaa-source">متفق عليه</div></div></div>
+            <div class="duaa-card"><div class="duaa-num">٣</div><div><div class="duaa-text">اللَّهُمَّ اغْفِرْ لِي ذَنْبِي كُلَّهُ، دِقَّهُ وَجِلَّهُ، وَأَوَّلَهُ وَآخِرَهُ، وَعَلَانِيَتَهُ وَسِرَّهُ.</div><div class="duaa-source">رواه مسلم</div></div></div>
+            <div class="duaa-card"><div class="duaa-num">٤</div><div><div class="duaa-text">اللَّهُمَّ لَكَ سَجَدْتُ، وَبِكَ آمَنْتُ، وَلَكَ أَسْلَمْتُ، سَجَدَ وَجْهِي لِلَّذِي خَلَقَهُ وَصَوَّرَهُ وَشَقَّ سَمْعَهُ وَبَصَرَهُ.</div><div class="duaa-source">رواه مسلم</div></div></div>
+            <div class="duaa-card"><div class="duaa-num">٥</div><div><div class="duaa-text">سُبُّوحٌ قُدُّوسٌ، رَبُّ الْمَلَائِكَةِ وَالرُّوحِ.</div><div class="duaa-source">رواه مسلم</div></div></div>
+          </div>
+        </div>
+
+        <div class="setup-title">اختر مستوى الصعوبة لتبدأ تحدي الـ40 يوم 🌙</div>
+        <div class="level-grid" id="slevel-grid">
+          <div class="level-card" data-level="0" onclick="sPick(0)">
+            <div class="licon">🌱</div>
+            <div class="lname">مسلم</div>
+            <div class="ldesc2">لو فاتك يوم تخسر نقاط بس تكمل</div>
+          </div>
+          <div class="level-card" data-level="1" onclick="sPick(1)">
+            <div class="licon">🌿</div>
+            <div class="lname">مؤمن</div>
+            <div class="ldesc2">فرصة واحدة طول الـ40 يوم</div>
+          </div>
+          <div class="level-card" data-level="2" onclick="sPick(2)">
+            <div class="licon">⭐</div>
+            <div class="lname">محسن</div>
+            <div class="ldesc2">أي يوم يفوت = تبدأ من اليوم 1</div>
+          </div>
+          <div class="level-card" data-level="3" onclick="sPick(3)">
+            <div class="licon">🌅</div>
+            <div class="lname">محافظ</div>
+            <div class="ldesc2">الفروض الخمس + صلاة الضحى كل يوم</div>
+          </div>
+        </div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.35);text-align:center;margin-bottom:10px;">✨ تحدي خاص</div>
+        <div class="level-card" data-level="4" onclick="sPick(4)" style="border-color:rgba(240,208,128,0.25);background:rgba(240,208,128,0.04);margin-bottom:10px;">
+          <div class="licon">🌙</div>
+          <div class="lname" style="color:#f0d080">على خطى الحبيب ﷺ</div>
+          <div class="ldesc2">40 يوم بالتدريج — رواتب جديدة كل 10 أيام</div>
+        </div>
+
+        <!-- زرار توضيح التدريج -->
+        <button onclick="toggleHabeebSteps()" style="width:100%;display:flex;align-items:center;justify-content:center;gap:8px;padding:10px 14px;border-radius:10px;border:0.5px solid rgba(240,208,128,0.2);background:transparent;cursor:pointer;font-family:'Tajawal',sans-serif;font-size:13px;color:rgba(240,208,128,0.7);margin-bottom:14px;">
+          <i class="ti ti-info-circle" aria-hidden="true" style="font-size:16px"></i>
+          كيف يعمل التدريج؟
+          <i class="ti ti-chevron-down" id="habeeb-chevron" aria-hidden="true" style="font-size:13px;margin-right:auto;transition:transform 0.2s"></i>
+        </button>
+
+        <div id="habeeb-steps" style="display:none;margin-bottom:14px;animation:fadeIn 0.25s ease">
+          <div style="font-family:'Amiri',serif;font-size:15px;color:#f0d080;text-align:center;margin-bottom:12px;">خطوات التحدي</div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div style="display:flex;gap:12px;align-items:flex-start;background:rgba(124,58,237,0.1);border:0.5px solid rgba(124,58,237,0.25);border-radius:10px;padding:12px;">
+              <div style="flex-shrink:0;width:36px;height:36px;border-radius:50%;background:rgba(124,58,237,0.3);display:flex;align-items:center;justify-content:center;font-family:'Amiri',serif;font-size:13px;color:#c4b5fd;">١-١٠</div>
+              <div>
+                <div style="font-family:'Amiri',serif;font-size:14px;color:#fff;margin-bottom:4px;">الأساس 🕌</div>
+                <div style="font-size:12px;color:rgba(255,255,255,0.6);line-height:1.8;">الفروض الخمس + صلاة الضحى + ركعتان قبل الفجر</div>
+              </div>
+            </div>
+            <div style="display:flex;gap:12px;align-items:flex-start;background:rgba(14,116,144,0.1);border:0.5px solid rgba(14,116,144,0.25);border-radius:10px;padding:12px;">
+              <div style="flex-shrink:0;width:36px;height:36px;border-radius:50%;background:rgba(14,116,144,0.3);display:flex;align-items:center;justify-content:center;font-family:'Amiri',serif;font-size:13px;color:#67e8f9;">١١-٢٠</div>
+              <div>
+                <div style="font-family:'Amiri',serif;font-size:14px;color:#fff;margin-bottom:4px;">+ راتبة الظهر 🌿</div>
+                <div style="font-size:12px;color:rgba(255,255,255,0.6);line-height:1.8;">كل ما في المرحلة الأولى + راتبة الظهر</div>
+              </div>
+            </div>
+            <div style="display:flex;gap:12px;align-items:flex-start;background:rgba(180,83,9,0.1);border:0.5px solid rgba(180,83,9,0.25);border-radius:10px;padding:12px;">
+              <div style="flex-shrink:0;width:36px;height:36px;border-radius:50%;background:rgba(180,83,9,0.3);display:flex;align-items:center;justify-content:center;font-family:'Amiri',serif;font-size:13px;color:#fcd34d;">٢١-٣٠</div>
+              <div>
+                <div style="font-family:'Amiri',serif;font-size:14px;color:#fff;margin-bottom:4px;">+ راتبة المغرب 🌅</div>
+                <div style="font-size:12px;color:rgba(255,255,255,0.6);line-height:1.8;">كل ما في المرحلة الثانية + راتبة المغرب</div>
+              </div>
+            </div>
+            <div style="display:flex;gap:12px;align-items:flex-start;background:rgba(4,120,87,0.1);border:0.5px solid rgba(4,120,87,0.25);border-radius:10px;padding:12px;">
+              <div style="flex-shrink:0;width:36px;height:36px;border-radius:50%;background:rgba(4,120,87,0.3);display:flex;align-items:center;justify-content:center;font-family:'Amiri',serif;font-size:13px;color:#6ee7b7;">٣١-٤٠</div>
+              <div>
+                <div style="font-family:'Amiri',serif;font-size:14px;color:#fff;margin-bottom:4px;">+ راتبة العشاء 🌙</div>
+                <div style="font-size:12px;color:rgba(255,255,255,0.6);line-height:1.8;">كل ما في المرحلة الثالثة + راتبة العشاء</div>
+              </div>
+            </div>
+          </div>
+          <div style="font-family:'Amiri',serif;font-size:13px;color:rgba(255,255,255,0.4);text-align:center;margin-top:10px;">كل مرحلة تبني على السابقة حتى تكتمل السنة</div>
+        </div>
+        <button class="purple-btn" id="salah-start-btn" onclick="sStart()" disabled>ابدأ التحدي ←</button>
+      </div>
+
+      <!-- CHALLENGE -->
+      <div id="salah-challenge" style="display:none">
+        <div style="text-align:center;margin-bottom:14px">
+          <div style="font-family:'Amiri',serif;font-size:15px;color:#f0d080" id="s-level-lbl">مسلم</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.4)" id="s-day-lbl">اليوم 1 من 40</div>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-box"><div class="sv" id="s-score">0</div><div class="sl">النقاط</div></div>
+          <div class="stat-box"><div class="sv" id="s-streak">0</div><div class="sl">أيام متتالية</div></div>
+          <div class="stat-box"><div class="sv" id="s-day">1</div><div class="sl">اليوم الحالي</div></div>
+          <div class="stat-box"><div class="sv" id="s-prayers">0</div><div class="sl">صلوات اليوم</div></div>
+        </div>
+        <div class="day-card2">
+          <div class="day-top">
+            <span id="s-today">اليوم 1 من 40</span>
+            <span class="dpts" id="s-dpts">0 نقطة</span>
+          </div>
+          <div class="prayers-grid" id="s-prayers-row"></div>
+          <div id="s-bonus"></div>
+        </div>
+        <div class="streak-section">
+          <div class="streak-title">تقدمك في الـ40 يوم</div>
+          <div class="dots-wrap" id="s-dots"></div>
+        </div>
+        <div class="badges-section">
+          <div class="badges-title">الشارات</div>
+          <div class="badges-wrap" id="s-badges"></div>
+        </div>
+
+        <div class="badges-section" id="effects-section" style="display:none">
+          <div class="badges-title">🌿 ثمار التحدي</div>
+          <div id="s-effects"></div>
+        </div>
+        <button class="sim-btn" onclick="sNextDay()">← انتقل ليوم جديد (محاكاة)</button>
+        <button class="sim-btn" style="margin-top:8px;color:rgba(255,255,255,0.3);font-size:12px;" onclick="sChangLevel()">تغيير المستوى</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- YAQEEN -->
+<div class="page" id="page-yaqeen">
+  <div class="top-nav">
+    <button class="back-btn" onclick="showPage('page-home')">← رجوع</button>
+    <div class="nav-title">باب اليقين</div>
+    <div style="width:80px"></div>
+  </div>
+  <div class="yaqeen-content">
+
+    <!-- Intro -->
+    <div class="y-intro">
+      هل مررت بيوم شعرت فيه بأن كل الأبواب مغلقة؟<br>
+      هل خفت من المستقبل أو المرض أو على الرزق؟<br><br>
+      <span style="color:#f0d080;font-size:clamp(16px,4vw,20px)">اليقين هو السر الذي يجعل القلب ثابتاً مهما تغيرت الظروف.</span>
+    </div>
+
+    <!-- ما هو اليقين -->
+    <div class="y-card">
+      <div class="y-card-title">🌙 اليقين ليس مجرد معرفة أن الله موجود...</div>
+      <div class="y-item">⬩ <span>الله يسمعك</span></div>
+      <div class="y-item">⬩ <span>الله يراك</span></div>
+      <div class="y-item">⬩ <span>الله يدبّر الأمر</span></div>
+      <div class="y-item">⬩ <span>الله بيده الخير</span></div>
+      <div class="y-item">⬩ <span>الله لن يضيّعك</span></div>
+      <div class="y-item">⬩ <span>ما أصابك لم يكن ليخطئك</span></div>
+      <div class="y-item">⬩ <span>أدرك أنها إرادة الله وليست إرادتي</span></div>
+      <div style="margin-top:10px;font-family:'Amiri',serif;font-size:13px;color:#f0d080;text-align:center;">فكلما زاد اليقين قلّ الخوف وازداد السلام الداخلي.</div>
+    </div>
+
+    <!-- كيف أبني اليقين -->
+    <div class="y-section-title">كيف أبني اليقين؟</div>
+    <div class="y-card">
+      <div class="y-card-title">١ — معرفة أسماء الله وصفاته</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;">
+        <span style="background:rgba(14,116,144,0.2);border:0.5px solid rgba(14,116,144,0.4);border-radius:20px;padding:4px 12px;font-family:'Amiri',serif;font-size:14px;color:#fff;">الرزّاق</span>
+        <span style="background:rgba(14,116,144,0.2);border:0.5px solid rgba(14,116,144,0.4);border-radius:20px;padding:4px 12px;font-family:'Amiri',serif;font-size:14px;color:#fff;">الحكيم</span>
+        <span style="background:rgba(14,116,144,0.2);border:0.5px solid rgba(14,116,144,0.4);border-radius:20px;padding:4px 12px;font-family:'Amiri',serif;font-size:14px;color:#fff;">اللطيف</span>
+        <span style="background:rgba(14,116,144,0.2);border:0.5px solid rgba(14,116,144,0.4);border-radius:20px;padding:4px 12px;font-family:'Amiri',serif;font-size:14px;color:#fff;">الرحيم</span>
+      </div>
+      <div style="margin-top:8px;font-size:12px;color:rgba(255,255,255,0.5);">فيزداد يقينك بتدبيره</div>
+    </div>
+    <div class="y-card">
+      <div class="y-card-title">٢ — تدبّر قصص القرآن</div>
+      <div class="y-item">📖 <span>قصة سيدنا إبراهيم في النار</span></div>
+      <div class="y-item">📖 <span>قصة سيدنا موسى أمام البحر</span></div>
+      <div class="y-item">📖 <span>قصة سيدنا يونس في بطن الحوت</span></div>
+    </div>
+    <div class="y-card">
+      <div class="y-card-title">٣ — لاحظ نعم الله السابقة عليك</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.7);line-height:1.9;">تذكّر كيف أنجاك الله من قبل وكيف دبّر أمرك.<br>اكتب موقفاً ظننت أنه مستحيل... وكيف فرّجه الله.</div>
+    </div>
+
+    <!-- Quiz -->
+    <div class="y-section-title">🌟 ما درجة اليقين في قلبك؟</div>
+    <div style="font-size:12px;color:rgba(255,255,255,0.4);text-align:center;margin-bottom:14px;">اختر الإجابة الأقرب إليك في كل موقف</div>
+
+    <div id="quiz-area">
+      <!-- Q1 -->
+      <div class="quiz-card">
+        <div class="quiz-q">١ — عندما تتأخر دعوة كنت تنتظرها بشدة...</div>
+        <button class="quiz-opt" onclick="ySelectOpt(this,0,0)"><div class="opt-num">أ</div>أشعر بالحزن وأن الله لن يستجيب دعائي.</button>
+        <button class="quiz-opt" onclick="ySelectOpt(this,0,1)"><div class="opt-num">ب</div>أشعر بالحزن ولكن أستمر بالدعاء.</button>
+        <button class="quiz-opt" onclick="ySelectOpt(this,0,2)"><div class="opt-num">ج</div>أزداد ثقة أن الله يختار لي الوقت الأفضل.</button>
+      </div>
+      <!-- Q2 -->
+      <div class="quiz-card">
+        <div class="quiz-q">٢ — إذا واجهتك أزمة مالية مفاجئة...</div>
+        <button class="quiz-opt" onclick="ySelectOpt(this,1,0)"><div class="opt-num">أ</div>أشعر بالذعر وأفكر في أسوأ الاحتمالات.</button>
+        <button class="quiz-opt" onclick="ySelectOpt(this,1,1)"><div class="opt-num">ب</div>أقلق ولكن أحاول البحث عن حلول.</button>
+        <button class="quiz-opt" onclick="ySelectOpt(this,1,2)"><div class="opt-num">ج</div>أسعى وآخذ بالأسباب مع اليقين بأن الرزق بيد الله.</button>
+      </div>
+      <!-- Q3 -->
+      <div class="quiz-card">
+        <div class="quiz-q">٣ — عندما تسمع خبراً مقلقاً عن صحتك...</div>
+        <button class="quiz-opt" onclick="ySelectOpt(this,2,0)"><div class="opt-num">أ</div>أعيش في خوف مستمر.</button>
+        <button class="quiz-opt" onclick="ySelectOpt(this,2,1)"><div class="opt-num">ب</div>أقلق ثم أهدأ تدريجياً.</button>
+        <button class="quiz-opt" onclick="ySelectOpt(this,2,2)"><div class="opt-num">ج</div>أتخذ الأسباب وأفوّض أمري إلى الله.</button>
+      </div>
+      <!-- Q4 -->
+      <div class="quiz-card">
+        <div class="quiz-q">٤ — إذا أُغلق باب كنت تظن أن الخير كله فيه...</div>
+        <button class="quiz-opt" onclick="ySelectOpt(this,3,0)"><div class="opt-num">أ</div>أشعر أنني خسرت فرصة العمر.</button>
+        <button class="quiz-opt" onclick="ySelectOpt(this,3,1)"><div class="opt-num">ب</div>أحزن لفترة ثم أتجاوز الأمر.</button>
+        <button class="quiz-opt" onclick="ySelectOpt(this,3,2)"><div class="opt-num">ج</div>أؤمن أن الله اختار لي الخير.</button>
+      </div>
+      <!-- Q5 -->
+      <div class="quiz-card">
+        <div class="quiz-q">٥ — عندما تمر بابتلاء طويل...</div>
+        <button class="quiz-opt" onclick="ySelectOpt(this,4,0)"><div class="opt-num">أ</div>أتساءل لماذا يحدث لي هذا.</button>
+        <button class="quiz-opt" onclick="ySelectOpt(this,4,1)"><div class="opt-num">ب</div>أحاول الصبر رغم صعوبة الأمر.</button>
+        <button class="quiz-opt" onclick="ySelectOpt(this,4,2)"><div class="opt-num">ج</div>أوقن أن وراء الابتلاء حكمة ورحمة.</button>
+      </div>
+
+      <button class="purple-btn" id="quiz-submit-btn" onclick="yShowResult()" disabled style="background:#0e7490;">اعرف نتيجتي ←</button>
+    </div>
+
+    <!-- Results -->
+    <div class="result-card r1" id="result-1">
+      <div class="result-title">اليقين يحتاج إلى تقوية 🌱</div>
+      <div class="result-desc">لا يعني ذلك ضعف الإيمان، لكنه مؤشر إلى الحاجة لمزيد من معرفة الله والتدبر في أسمائه وصفاته.</div>
+      <div class="result-wasiya">
+        <strong>وصيتك هذا الأسبوع:</strong>
+        ✦ قراءة سورة يوسف<br>
+        ✦ ترديد "لا حول ولا قوة إلا بالله" 100 مرة كل يوم واستشعار معناها
+      </div>
+    </div>
+    <div class="result-card r2" id="result-2">
+      <div class="result-title">لديك أساس جيد من الثقة بالله 🌿</div>
+      <div class="result-desc">لكنك ما زلت تتأثر بشدة عند الأزمات. اليقين يحتاج إلى تغذية مستمرة.</div>
+      <div class="result-wasiya">
+        <strong>وصيتك هذا الأسبوع:</strong>
+        ✦ اكتب خمس مواقف فرّجها الله عليك من قبل<br>
+        ✦ اقرأ قصة سيدنا موسى وهو أمام البحر
+      </div>
+    </div>
+    <div class="result-card r3" id="result-3">
+      <div class="result-title">يقينك مرتفع بإذن الله ⭐</div>
+      <div class="result-desc">أنت تميل إلى رؤية الأحداث بعين الثقة بالله وحسن الظن به. هذا نعمة عظيمة، احرص على المداومة عليها.</div>
+      <div class="result-wasiya">
+        <strong>وصيتك:</strong>
+        شارك قصة من حياتك زاد فيها يقينك بالله لتكون مصدر إلهام للآخرين 👇
+      </div>
+    </div>
+
+    <!-- Share -->
+    <div class="share-card" id="share-section" style="display:none">
+      <div class="share-title">🌟 شارك تجربتك</div>
+      <div class="share-q">ما الموقف الذي اختبر الله فيه يقينك ثم أراك فرجه؟</div>
+      <textarea class="share-textarea" id="story-input" placeholder="اكتب قصتك هنا..." rows="4"></textarea>
+      <button class="share-btn" onclick="yAddStory()">شارك القصة 🌿</button>
+      <div class="shared-stories" id="shared-stories"></div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ELAQAT -->
+<div class="page" id="page-elaqat">
+  <div class="top-nav">
+    <button class="back-btn" onclick="showPage('page-home')">← رجوع</button>
+    <div class="nav-title">باب العلاقات</div>
+  </div>
+  <div class="page-content" style="padding:24px 20px;max-width:680px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:32px;">
+      <div style="font-size:56px;margin-bottom:12px;">🤍</div>
+      <h2 style="font-family:'Amiri',serif;font-size:28px;color:#e9c46a;margin-bottom:8px;">باب العلاقات</h2>
+      <p style="color:#c4b5fd;font-size:16px;line-height:1.8;">العلاقات الطيبة أساس الحياة الطيبة</p>
+    </div>
+
+    <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(196,181,253,0.2);border-radius:16px;padding:24px;margin-bottom:20px;">
+      <h3 style="color:#e9c46a;font-family:'Amiri',serif;font-size:20px;margin-bottom:16px;display:flex;align-items:center;gap:8px;">💞 أسس العلاقة الطيبة</h3>
+      <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:12px;">
+        <li style="display:flex;align-items:flex-start;gap:10px;color:#e0d9f7;font-size:15px;line-height:1.7;"><span style="color:#a78bfa;font-size:18px;margin-top:2px;">✦</span><span><strong style="color:#c4b5fd;">الصدق</strong> — كن صادقاً في كلامك وعهودك</span></li>
+        <li style="display:flex;align-items:flex-start;gap:10px;color:#e0d9f7;font-size:15px;line-height:1.7;"><span style="color:#a78bfa;font-size:18px;margin-top:2px;">✦</span><span><strong style="color:#c4b5fd;">الاحترام</strong> — احترم الآخرين كما تحب أن يُحترم</span></li>
+        <li style="display:flex;align-items:flex-start;gap:10px;color:#e0d9f7;font-size:15px;line-height:1.7;"><span style="color:#a78bfa;font-size:18px;margin-top:2px;">✦</span><span><strong style="color:#c4b5fd;">التسامح</strong> — العفو من أرقى أخلاق المؤمن</span></li>
+        <li style="display:flex;align-items:flex-start;gap:10px;color:#e0d9f7;font-size:15px;line-height:1.7;"><span style="color:#a78bfa;font-size:18px;margin-top:2px;">✦</span><span><strong style="color:#c4b5fd;">الوفاء</strong> — كن وفياً لمن أحبك وأكرمك</span></li>
+      </ul>
+    </div>
+
+    <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(196,181,253,0.2);border-radius:16px;padding:24px;margin-bottom:20px;">
+      <h3 style="color:#e9c46a;font-family:'Amiri',serif;font-size:20px;margin-bottom:16px;">🌸 من هدي النبي ﷺ في العلاقات</h3>
+      <div style="background:rgba(196,181,253,0.08);border-right:3px solid #a78bfa;padding:16px;border-radius:8px;margin-bottom:12px;">
+        <p style="color:#e0d9f7;font-size:15px;line-height:1.9;margin:0;font-family:'Amiri',serif;">"لا يؤمن أحدكم حتى يحب لأخيه ما يحب لنفسه"</p>
+        <p style="color:#a78bfa;font-size:13px;margin:8px 0 0;">— رواه البخاري ومسلم</p>
+      </div>
+      <div style="background:rgba(196,181,253,0.08);border-right:3px solid #a78bfa;padding:16px;border-radius:8px;">
+        <p style="color:#e0d9f7;font-size:15px;line-height:1.9;margin:0;font-family:'Amiri',serif;">"خيركم خيركم لأهله، وأنا خيركم لأهلي"</p>
+        <p style="color:#a78bfa;font-size:13px;margin:8px 0 0;">— رواه الترمذي</p>
+      </div>
+    </div>
+
+    <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(196,181,253,0.2);border-radius:16px;padding:24px;margin-bottom:20px;">
+      <h3 style="color:#e9c46a;font-family:'Amiri',serif;font-size:20px;margin-bottom:16px;">🌿 عادات يومية لعلاقات أفضل</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div style="background:rgba(167,139,250,0.1);border-radius:12px;padding:16px;text-align:center;">
+          <div style="font-size:28px;margin-bottom:8px;">☎️</div>
+          <p style="color:#c4b5fd;font-size:14px;margin:0;">تواصل مع من تحب كل يوم</p>
+        </div>
+        <div style="background:rgba(167,139,250,0.1);border-radius:12px;padding:16px;text-align:center;">
+          <div style="font-size:28px;margin-bottom:8px;">🤲</div>
+          <p style="color:#c4b5fd;font-size:14px;margin:0;">ادعُ لأحبابك في كل صلاة</p>
+        </div>
+        <div style="background:rgba(167,139,250,0.1);border-radius:12px;padding:16px;text-align:center;">
+          <div style="font-size:28px;margin-bottom:8px;">🎁</div>
+          <p style="color:#c4b5fd;font-size:14px;margin:0;">أهدِ ولو بكلمة طيبة</p>
+        </div>
+        <div style="background:rgba(167,139,250,0.1);border-radius:12px;padding:16px;text-align:center;">
+          <div style="font-size:28px;margin-bottom:8px;">😊</div>
+          <p style="color:#c4b5fd;font-size:14px;margin:0;">ابتسامتك في وجه أخيك صدقة</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;padding:20px;">
+      <button onclick="showPage('page-home')" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);color:#fff;border:none;border-radius:24px;padding:14px 40px;font-family:'Tajawal',sans-serif;font-size:16px;cursor:pointer;">← العودة للأبواب</button>
+    </div>
+  </div>
+</div>
+
+<!-- RIZQ -->
+<div class="page" id="page-rizq">
+  <div class="top-nav">
+    <button class="back-btn" onclick="showPage('page-home')">← رجوع</button>
+    <div class="nav-title">باب الرزق</div>
+    <div style="width:80px"></div>
+  </div>
+  <div style="position:relative;z-index:1;padding:0 16px 40px">
+    <div style="font-family:'Amiri',serif;font-size:13px;color:rgba(255,255,255,0.45);text-align:center;margin-bottom:16px;">اضغط على الصورة للانتقال للتالية</div>
+    <div class="rz-slider" id="rz-slider">
+      <div class="rz-slide rz-active" id="rzs0">
+        <div class="rz-slide-title">مفهوم الرزق</div>
+        <img src="data:image/jpeg;base64,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
+    </div>
+  </div>
+</div>
+
+<script>
+// ===== PAGE NAVIGATION =====
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  var pg=document.getElementById(id);
+  if(pg){pg.classList.add('active');window.scrollTo(0,0);}
+}
+
+// ===== STARS =====
+(function(){
+  var c=document.getElementById('stars');
+  for(var i=0;i<60;i++){
+    var s=document.createElement('div');s.className='star';
+    var sz=Math.random()*2.5+0.5;
+    s.style.cssText='width:'+sz+'px;height:'+sz+'px;top:'+Math.random()*100+'%;left:'+Math.random()*100+'%;animation-delay:'+Math.random()*4+'s;animation-duration:'+(2+Math.random()*3)+'s';
+    c.appendChild(s);
+  }
+})();
+
+// ===== DHIKR =====
+var DHIKR_LIST=[
+  {text:'الحمد لله',color:'#7c3aed'},
+  {text:'سبحان الله',color:'#047857'},
+  {text:'لا إله إلا الله',color:'#0e7490'},
+  {text:'الله أكبر',color:'#b45309'},
+  {text:'أستغفر الله',color:'#be185d'}
+];
+var dLevel=0,dIdx=0,dCount=0,dTarget=33,dSelected=false;
+
+function dPickLevel(l){
+  dLevel=l;dSelected=true;
+  document.querySelectorAll('#dhikr-level-grid .level-card').forEach(function(c,i){c.classList.toggle('selected',i===l);});
+  document.getElementById('dhikr-start-btn').disabled=false;
+  dTarget=[33,66,100][l];
+}
+function dStart(){
+  if(!dSelected)return;
+  dIdx=0;dCount=0;
+  document.getElementById('dhikr-setup').style.display='none';
+  var g=document.getElementById('dhikr-game');g.style.display='flex';g.style.flexDirection='column';
+  dRender();
+}
+function dRender(){
+  var d=DHIKR_LIST[dIdx];
+  document.getElementById('dhikr-text').textContent=d.text;
+  document.getElementById('dhikr-target-lbl').textContent=dTarget+' مرة';
+  document.getElementById('cnt').textContent=dCount;
+  document.getElementById('denom').textContent='من '+dTarget;
+  var arc=document.getElementById('arc');
+  arc.style.stroke=d.color;
+  var circ=477.5,pct=dCount/dTarget;
+  arc.style.strokeDashoffset=circ-(circ*pct);
+  var prog=document.getElementById('prog');
+  prog.style.width=((dIdx/DHIKR_LIST.length)*100+(pct/DHIKR_LIST.length)*100)+'%';
+  prog.style.background=d.color;
+  var dots=document.getElementById('ldots');dots.innerHTML='';
+  DHIKR_LIST.forEach(function(_,i){
+    var dot=document.createElement('div');
+    dot.className='ldot'+(i<dIdx?' done':i===dIdx?' active':'');
+    dot.textContent=i+1;dots.appendChild(dot);
+  });
+  document.getElementById('complete-box').style.display='none';
+  document.getElementById('game-area').style.display='flex';
+  document.getElementById('next-btn').textContent=dIdx<DHIKR_LIST.length-1?'الذكر التالي ←':'إنهاء ←';
+}
+document.getElementById('ring').addEventListener('click',function(){
+  if(dCount>=dTarget)return;
+  dCount++;
+  var ring=document.getElementById('ring');
+  ring.classList.add('pulse-anim');
+  setTimeout(function(){ring.classList.remove('pulse-anim');},150);
+  var circ=477.5,pct=dCount/dTarget;
+  document.getElementById('arc').style.strokeDashoffset=circ-(circ*pct);
+  document.getElementById('cnt').textContent=dCount;
+  if(dCount>=dTarget){
+    if(dIdx>=DHIKR_LIST.length-1){
+      document.getElementById('game-area').style.display='none';
+      var ab=document.getElementById('all-done-box');ab.style.display='flex';ab.style.flexDirection='column';ab.style.alignItems='center';
+    } else {
+      document.getElementById('complete-box').style.display='block';
+    }
+  }
+});
+function dNextLevel(){
+  if(dIdx<DHIKR_LIST.length-1){dIdx++;dCount=0;dRender();}
+  else{document.getElementById('game-area').style.display='none';var ab=document.getElementById('all-done-box');ab.style.display='flex';ab.style.flexDirection='column';ab.style.alignItems='center';}
+}
+function dResetLevel(){dCount=0;dRender();}
+function dRestartAll(){dIdx=0;dCount=0;document.getElementById('game-area').style.display='flex';document.getElementById('all-done-box').style.display='none';dRender();}
+function dChangeLevel(){dIdx=0;dCount=0;dSelected=false;document.getElementById('dhikr-game').style.display='none';document.getElementById('dhikr-setup').style.display='block';}
+function initDhikr(){}
+function toggleDhikrTip(){var t=document.getElementById('dhikr-tip');t.style.display=t.style.display==='none'?'block':'none';}
+
+// ===== SALAH =====
+var sLevelSel=null,sDays=[],sCurDay=0,sStreak=0;
+var SALAH_NAMES=['الفجر','الظهر','العصر','المغرب','العشاء'];
+var SALAH_LEVEL_NAMES=['مسلم','مؤمن','محسن','محافظ','على خطى الحبيب ﷺ'];
+var SALAH_BADGES=[
+  {icon:'🌅',name:'أول فجر',earned:false},
+  {icon:'🔥',name:'3 أيام متتالية',earned:false},
+  {icon:'⭐',name:'يوم كامل',earned:false},
+  {icon:'🏆',name:'أسبوع كامل',earned:false}
+];
+
+function sPick(l){
+  sLevelSel=l;
+  document.querySelectorAll('#slevel-grid .level-card').forEach(function(c,i){c.classList.toggle('selected',i===l);});
+  document.getElementById('salah-start-btn').disabled=false;
+}
+function sStart(){
+  if(sLevelSel===null)return;
+  document.getElementById('salah-setup').style.display='none';
+  document.getElementById('salah-challenge').style.display='block';
+  sDays=[{prayers:[false,false,false,false,false]}];
+  sCurDay=0;sStreak=0;
+  sRender();
+}
+function sRender(){
+  var d=sDays[sCurDay];
+  var done=d.prayers.filter(Boolean).length;
+  document.getElementById('s-level-lbl').textContent=SALAH_LEVEL_NAMES[sLevelSel]||'';
+  document.getElementById('s-day-lbl').textContent='اليوم '+(sCurDay+1)+' من 40';
+  document.getElementById('s-score').textContent=sDays.reduce(function(a,dd){return a+dd.prayers.filter(Boolean).length*20;},0);
+  document.getElementById('s-streak').textContent=sStreak;
+  document.getElementById('s-day').textContent=sCurDay+1;
+  document.getElementById('s-prayers').textContent=done;
+  document.getElementById('s-today').textContent='اليوم '+(sCurDay+1)+' من 40';
+  document.getElementById('s-dpts').textContent=(done*20)+' نقطة';
+  // prayers buttons
+  var pg=document.getElementById('s-prayers-row');pg.innerHTML='';
+  SALAH_NAMES.forEach(function(n,i){
+    var b=document.createElement('button');
+    b.className='p-btn'+(d.prayers[i]?' done':'');
+    b.innerHTML='<span style="font-size:16px">'+(d.prayers[i]?'✅':'○')+'</span><span>'+n+'</span>';
+    (function(idx){b.onclick=function(){d.prayers[idx]=!d.prayers[idx];sRender();};})(i);
+    pg.appendChild(b);
+  });
+  // bonus
+  var bonus=document.getElementById('s-bonus');
+  bonus.innerHTML=done===5?'<div class="bonus-tag">🌟 أكملت صلوات اليوم!</div>':'';
+  // dots
+  var dw=document.getElementById('s-dots');dw.innerHTML='';
+  for(var i=0;i<40;i++){
+    var dot=document.createElement('div');
+    var fd=sDays[i];
+    var cls='sdot';
+    if(fd){if(fd.prayers.every(Boolean))cls+=' full';else if(fd.prayers.some(Boolean))cls+=' partial';}
+    if(i===sCurDay)cls+=' today';
+    dot.className=cls;
+    dw.appendChild(dot);
+  }
+  // badges
+  if(d.prayers[0])SALAH_BADGES[0].earned=true;
+  if(done===5)SALAH_BADGES[2].earned=true;
+  if(sStreak>=3)SALAH_BADGES[1].earned=true;
+  if(sStreak>=7)SALAH_BADGES[3].earned=true;
+  var bw=document.getElementById('s-badges');bw.innerHTML='';
+  SALAH_BADGES.forEach(function(b){
+    var el=document.createElement('div');
+    el.className='badge2'+(b.earned?' earned':'');
+    el.innerHTML=b.icon+' '+b.name;
+    bw.appendChild(el);
+  });
+}
+function sNextDay(){
+  var prev=sDays[sCurDay];
+  if(prev&&prev.prayers.every(Boolean))sStreak++;else sStreak=0;
+  sDays.push({prayers:[false,false,false,false,false]});
+  sCurDay=sDays.length-1;
+  sRender();
+}
+function sChangLevel(){
+  document.getElementById('salah-challenge').style.display='none';
+  document.getElementById('salah-setup').style.display='block';
+  sLevelSel=null;
+  document.getElementById('salah-start-btn').disabled=true;
+}
+function initSalah(){}
+function sSw(btn,panelId){
+  document.querySelectorAll('.stab').forEach(function(t){t.classList.remove('on');});
+  btn.classList.add('on');
+  document.querySelectorAll('.spanel').forEach(function(p){p.classList.remove('on');});
+  var panel=document.getElementById(panelId);
+  if(panel)panel.classList.add('on');
+}
+function toggleSalahDuaa(){
+  var b=document.getElementById('salah-duaa-panel');
+  b.style.display=b.style.display==='none'||b.style.display===''?'block':'none';
+}
+function showDuaaTab(tab,btn){
+  document.querySelectorAll('.duaa-tab').forEach(function(t){t.classList.remove('active-tab');});
+  btn.classList.add('active-tab');
+  ['istiftah','rukoo','sujood'].forEach(function(t){
+    var p=document.getElementById('tab-'+t);
+    if(p)p.style.display=t===tab?'block':'none';
+  });
+}
+function toggleHabeebSteps(){
+  var b=document.getElementById('habeeb-steps');
+  b.style.display=b.style.display==='none'||b.style.display===''?'block':'none';
+}
+
+// ===== YAQEEN =====
+var yAnswers=[];
+function ySelectOpt(btn,q,opt){
+  var card=btn.closest('.quiz-card');
+  card.querySelectorAll('.quiz-opt').forEach(function(b){b.classList.remove('selected');});
+  btn.classList.add('selected');
+  yAnswers[q]=opt;
+  var allQ=document.querySelectorAll('.quiz-card');
+  var answered=0;for(var i=0;i<allQ.length;i++){if(yAnswers[i]!==undefined)answered++;}
+  document.getElementById('quiz-submit-btn').disabled=answered<allQ.length;
+}
+function yShowResult(){
+  var sum=0;for(var i=0;i<yAnswers.length;i++){sum+=(yAnswers[i]||0);}
+  document.querySelectorAll('.result-card').forEach(function(r){r.style.display='none';});
+  var rId=sum>=10?'r3':sum>=6?'r2':'r1';
+  var rc=document.getElementById(rId);rc.style.display='block';
+  rc.scrollIntoView({behavior:'smooth'});
+}
+function yAddStory(){
+  var ta=document.getElementById('story-input');
+  if(!ta||!ta.value.trim())return;
+  var div=document.createElement('div');div.className='story-item';div.textContent=ta.value.trim();
+  document.getElementById('shared-stories').appendChild(div);
+  ta.value='';
+}
+
+// ===== RIZQ =====
+var rzIdx=0;
+function rzGo(idx){
+  var slides=document.querySelectorAll('.rz-slide');
+  if(idx<0||idx>=slides.length)return;
+  slides[rzIdx].classList.remove('rz-active');
+  rzIdx=idx;
+  slides[rzIdx].classList.add('rz-active');
+  document.querySelectorAll('.rz-dot').forEach(function(d,i){d.classList.toggle('rz-dot-on',i===rzIdx);});
+}
+document.addEventListener('click',function(e){
+  var slider=e.target.closest('.rz-slider');
+  var arrow=e.target.closest('.rz-arrow');
+  var dot=e.target.closest('.rz-dot');
+  if(dot){rzGo(parseInt(dot.dataset.i||0));return;}
+  if(arrow){rzGo(arrow.dataset.dir==='prev'?rzIdx-1:rzIdx+1);return;}
+  if(slider&&!arrow&&!dot){rzGo(rzIdx+1);}
+});
+
+// ===== INIT =====
+window.addEventListener('load',function(){
+  var slides=document.querySelectorAll('.rz-slide');
+  var dots=document.querySelectorAll('.rz-dot');
+  dots.forEach(function(d,i){d.dataset.i=i;d.classList.toggle('rz-dot-on',i===0);});
+});
+</script>
+</body>
+</html>
